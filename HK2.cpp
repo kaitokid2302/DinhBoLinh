@@ -28,7 +28,7 @@ int main(){
     cin.tie(0);
     cout.tie(0);
     
-    int n; 
+    int n;
     cin >> n;
     f1(i, n) cin >> a[i];
     cin >> k;
@@ -39,5 +39,5 @@ int main(){
     // đề bài nói là các số sẽ là 64 bit, nghĩa là gì?
     // nghĩa là giới hạn của số sẽ là 2^64, tức là gần bằng 10^19, nên ta sẽ dùng kiểu long long để lưu trữ
     // Khi nói đến số 32 bit, ta nghĩ ngay đến kiểu int, khi nói đến số 64 bit, ta nghĩ ngay đến kiểu long long
-    
+
 }

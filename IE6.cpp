@@ -19,19 +19,22 @@ using namespace std;
 typedef long long ll;
 const int mod = 1000000007;
 
-ll calculateDateBetween(int date1, int month1, int year1, int date2, int month2, int year2){
-    
-}
 
 int main(){
     ios::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
     
-    ll date, month, year;
-    cin >> date >> month >> year;
+    ll day, month, year;
+    cin >> day >> month >> year;
 
-    ll res = calculateDateBetween(date, month, year, 26, 3, 2024);
-    string d[7] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
-    cout << d[(res + 1) % 7];
+    int jmd = (day + ((153 * (month + 12 * ((14 - month) / 12) - 3) + 2) / 5) +
+     (365 * (year + 4800 - ((14 - month) / 12))) +
+     ((year + 4800 - ((14 - month) / 12)) / 4) - 
+    ((year + 4800 - ((14 - month) / 12)) / 100) + 
+    ((year + 4800 - ((14 - month) / 12)) / 400)  - 32045) % 7;
+    string res[] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+    cout << res[(jmd + 1) % 7];
 }
+
+// bài này dùng Julian Day Calculation, đây là công thức

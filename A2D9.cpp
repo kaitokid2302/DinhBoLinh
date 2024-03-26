@@ -48,7 +48,7 @@ int main(){
     // Bài này để ý tam giác dưới đường chéo chính là những ô mà có i > j
     // Ok là 1 biến cờ - flag, ban đầu gán cho biến cờ 1 giá trị nào đó, sau này nếu có điều kiện gì đó 
     // không thoả mãn, thì gán biến cờ là 1 gía trị khác, để biết rằng có điều kiện gì đó không đúng
-    // Sau này ra khỏi vòng lặp hoặc hàm, kiểm tra biến cờ, nếu biến cờ vẫn giữ nguyên giá trị ban đầu 
+    // Sau này ra khỏi vòng lặp hoặc hàm, kiểm tra biến cờ, nếu biến cờ đã thay đổi giá trị ban đầu 
     // thì nghĩa là có điều kiền nào đó không thoả mãn, tức là bài toán không đúng 100%, còn biến cờ không đổi giá trị
     // tức là bài toán đúng 100%
     // biến cờ rất quan trọng trong tin, 100% bài toán đều dùng biến cờ

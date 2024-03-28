@@ -42,5 +42,6 @@ int main(){
     // d là mảng đánh dấu
     // Vì đề bài đảm bảo chỉ có ký tự latin thường nên ta có thể dùng mảng d[26] để đánh dấu
     // khi viết s[i] - 'a', giá trị này sẽ nằm trong khoảng từ 0 đến 25, nên ta có thể dùng mảng d[26] để đánh dấu
-    
+    // khi viết int d[26] = {0}; thì mảng d sẽ được khởi tạo tất cả các phần tử bằng 0
+
 }

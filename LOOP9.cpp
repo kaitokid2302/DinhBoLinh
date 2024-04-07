@@ -43,3 +43,7 @@ int main(){
         cout << "NO";
     }
 }
+// Với mỗi i từ 1 đến căn bậc 2 của n, ta sẽ tìm được 2 số x và y sao cho x*y = n
+// Với mỗi cặp x và y, ta cộng x và y vào res
+// Nếu x = y tức là x = sqrt(n), ta đã cộng cả x và y, nên ta phải trừ 1 trong 2 đi, vì nó lặp lại
+// Sau khi cộng hết tất cả các cặp x và y, ta sẽ trừ n ra khỏi res, vì ta không tính chính nó, theo đề bài

@@ -33,7 +33,7 @@ int main(){
             cout << prev;
             return 0;
         }
-        prev = x;
+        if(x > 0) prev = x;
     }
-    cout << prev;
+    if(prev > 0) cout << prev;
 }

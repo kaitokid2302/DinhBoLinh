@@ -1,110 +1,1386 @@
-1 FOR7
-2 A2D11
-3 ARR10
-4 IF1
-5 IE2
-6 A2D9
-7 IE8
-8 S11
-9 HK2
-10 SH6
-11 MOD1
-12 STR1
-13 A2D13
-14 SH2
-15 AF3
-16 IF2
-17 CA1
-18 IE6
-19 S6
-20 A2D14
-21 S9
-22 SH1
-23 HH1
-24 S3FOR6
-25 LOOP10
-26 ITOA
-27 A2D4
-28 S4
-29 A2D3
-30 AR6
-31 ARR12
-32 IE5
-33 SH5
-34 CAL4
-35 CAЗ
-36 IF6
-37 LOOP4
-38 CA6
-39 A2D10
-40 CA5
-41 FOR5
-42 ARR9
-43 A2D7
-44 FOR4
-45 CAL8
-46 Td007
-47 S8
-48 S5
-49 ARR11
-50 LOOP6
-51 CA9
-52 FOR3
-53 CA8
-54 AMUB1
-55 FOR10
-56 LOOP5
-57 HK3
-58 CSC
-59 AF4
-60 IE3
-61 ARR8
-62 SH3
-63 LOOP8
-64 LOOP11
-65 CAL7
-66 CAL9
-67 IE10
-68 ARR6
-69 IF7
-70 EZCAL
-71 A2D5
-72 A2D6
-73 SH7
-74 IF5
-75 CAL6
-76 SH10
-77 HH4
-78 ARR7
-79 CHIATAO
-80 IF3
-81 FOR2
-82 A2D12
-83 SH4
-84 FOR8
-85 AF2
-86 HK4
-87 IE4
-88 LOOP3
-89 LOOP7
-90 HH3
-91 HH2
-92 AR10
-93 CA7
-94 CA4
-95 AF1
-96 LOOP2
-97 A2D8
-98 IE7
-99 AF5
-100 FOR9
-101 57
-102 IE9
-103 AF11
-104 AF6
-105 CAL5
-106 6HS
-107 MOD2
-108 LOOP9
-109 HK1
-110 IF4
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < (n); i++)
+#define f1(i, n) for (int i = 1; i <= (n); i++)
+#define f2(i, n) for (int i = 2; i <= (n); i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+    int n; cin >> n;
+    ll res = 0;
+    ll cur = 1;
+    f1(i, n){
+        cur *= i;
+        cur %= mod;
+        res += cur;
+        res %= mod;
+    }
+    cout << res;
+}
+
+// a*b % mod = (a % mod) * (b % mod) % mod
+// (a + b) % mod = (a % mod + b % mod) % mod
+// (a - b) % mod = (a % mod - b % mod + mod) % mod
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < (n); i++)
+#define f1(i, n) for (int i = 1; i <= (n); i++)
+#define f2(i, n) for (int i = 2; i <= (n); i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+    int n; cin >> n;
+    int a[n];
+    f0(i, n){
+        cin >> a[i];
+    }
+    int res = 0;
+    f0(i, n){
+        for(int j = i + 1; j < n; j++){
+            if(a[i] > a[j]) res++;
+        }
+    }
+    cout << res;
+}
+// bài này khá straight forward, chỉ cần duyệt qua từng cặp phần tử, nếu thỏa điều kiện thì tăng biến res lên 1
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < (n); i++)
+#define f1(i, n) for (int i = 1; i <= (n); i++)
+#define f2(i, n) for (int i = 2; i <= (n); i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+    ll n; cin >> n;
+    ll res = 0;
+    for(ll i = 1; i <= sqrt(n); i++){
+        ll x = i;
+        ll y = n/i;
+        res += (x + y);
+        if(x == y){
+            res -= x;
+        }
+    }
+    res -= n;
+    if(res == n){
+        cout << "YES";
+    }
+    else{
+        cout << "NO";
+    }
+}
+// Với mỗi i từ 1 đến căn bậc 2 của n, ta sẽ tìm được 2 số x và y sao cho x*y = n
+// Với mỗi cặp x và y, ta cộng x và y vào res
+// Nếu x = y tức là x = sqrt(n), ta đã cộng cả x và y, nên ta phải trừ 1 trong 2 đi, vì nó lặp lại
+// Sau khi cộng hết tất cả các cặp x và y, ta sẽ trừ n ra khỏi res, vì ta không tính chính nó, theo đề bài
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < n; i++)
+#define f1(i, n) for (int i = 1; i <= n; i++)
+#define f2(i, n) for (int i = 2; i <= n; i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+    ll day, month, year;
+    cin >> day >> month >> year;
+
+    int jmd = (day + ((153 * (month + 12 * ((14 - month) / 12) - 3) + 2) / 5) +
+     (365 * (year + 4800 - ((14 - month) / 12))) +
+     ((year + 4800 - ((14 - month) / 12)) / 4) - 
+    ((year + 4800 - ((14 - month) / 12)) / 100) + 
+    ((year + 4800 - ((14 - month) / 12)) / 400)  - 32045) % 7;
+    string res[] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+    cout << res[(jmd + 1) % 7];
+}
+
+// bài này dùng Julian Day Calculation, đây là công thức
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < n; i++)
+#define f1(i, n) for (int i = 1; i <= n; i++)
+#define f2(i, n) for (int i = 2; i <= n; i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+ll gcd(ll a, ll b){
+    if(b == 0) return a;
+    return gcd(b, a % b);
+}
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
+    int n; cin >> n;
+    ll a[n + 1];
+    f1(i, n) cin >> a[i];
+
+    int res = 0;
+    f1(i, n){
+        f1(j, n){
+            if(i != j && i < j){
+                if(gcd(a[i], a[j]) > 1) res++;
+            }
+        }
+    }
+    cout << res;
+}
+
+// Bài này quan trọng xây được gcd, cần phải hiểu rõ tại sao lại viết hàm gcd như vậy, và tại sao dùng đệ quy, bắt buộc phải hiểu rõ cách hoạt động của gcd
+
+#include <iostream>
+#include <algorithm>
+
+#define f0(i, n) for (int i = 0; i < n; i++)
+#define f1(i, n) for (int i = 1; i <= n; i++)
+#define f2(i, n) for (int i = 2; i <= n; i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+    int a, b, c; cin >> a >> b >> c;
+    cout << min(a, min(b, c));
+
+    // hàm min thuộc về algorithm nên chỉ cần include algorithm là có thể dùng được
+}
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < (n); i++)
+#define f1(i, n) for (int i = 1; i <= (n); i++)
+#define f2(i, n) for (int i = 2; i <= (n); i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+ll gcd(ll a, ll b){
+    if(b == 0){
+        return a;
+    }
+    return gcd(b, a % b);
+}
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+    ll a, b;
+    cin >> a >> b;
+
+    ll x1 = 0, x2 = 0;
+    while(a || b){
+        x1 += (a % 10);
+        x2 += (b % 10);
+        a /= 10;
+        b /= 10;
+    }
+    cout << (x1*x2)/gcd(x1, x2);
+}
+
+// công thức BCNN(a, b) = a*b/UCLN(a, b)
+// Khi 1 trong 2 số a hoặc b vẫn lớn hơn 0, thì while vẫn chạy
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < n; i++)
+#define f1(i, n) for (int i = 1; i <= n; i++)
+#define f2(i, n) for (int i = 2; i <= n; i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+const int N = 102;
+
+int n, a[N][N];
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
+    cin >> n;
+    bool ok = true;
+
+    f1(i, n) f1(j, n) cin >> a[i][j];
+    f1(i, n) f1(j, n){
+        if(i > j){
+            if(a[i][j] != 0){
+                ok = false;
+                break;
+            }
+        }
+    }
+    if(ok){
+        cout << "YES";
+    }
+    else{
+        cout << "NO";
+    }
+    // Bài này để ý tam giác dưới đường chéo chính là những ô mà có i > j
+    // Ok là 1 biến cờ - flag, ban đầu gán cho biến cờ 1 giá trị nào đó, sau này nếu có điều kiện gì đó 
+    // không thoả mãn, thì gán biến cờ là 1 gía trị khác, để biết rằng có điều kiện gì đó không đúng
+    // Sau này ra khỏi vòng lặp hoặc hàm, kiểm tra biến cờ, nếu biến cờ đã thay đổi giá trị ban đầu 
+    // thì nghĩa là có điều kiền nào đó không thoả mãn, tức là bài toán không đúng 100%, còn biến cờ không đổi giá trị
+    // tức là bài toán đúng 100%
+    // biến cờ rất quan trọng trong tin, 100% bài toán đều dùng biến cờ
+
+    
+}
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < (n); i++)
+#define f1(i, n) for (int i = 1; i <= (n); i++)
+#define f2(i, n) for (int i = 2; i <= (n); i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+    int n; cin >> n;
+    ll res = 0;
+    f0(i, n){
+        f0(j, n){
+            ll x; cin >> x;
+            if(i==0 || i == n - 1 || j == 0 || j == n - 1){
+                res += x;
+            }
+        }
+    }
+    cout << res;
+}
+// các số thuộc biên là các số ở hàng đầu, hàng cuối, cột đầu, cột cuối, chỉ cần duyệt qua các số này và cộng vào biến res là xong
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < n; i++)
+#define f1(i, n) for (int i = 1; i <= n; i++)
+#define f2(i, n) for (int i = 2; i <= n; i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+    int n; cin >> n;
+    int a[n + 1];
+    f1(i, n) cin >> a[i];
+
+    int t; cin >> t;
+    while(t--){
+        // cách while này tương đương với for(int i = 1; i <= t; i++)
+        // điều kiện của if, hay while, bản chất là là 1 biến, tức là muốn if, while chạy, thì điều kiện luôn phải > 0
+        // nếu điều kiện = 0, thì if, while sẽ không chạy
+        // vậy nên t-- nghĩa là cứ chạy, rồi giảm t đi 1, đến khi t = 0, thì dừng
+
+        int x; cin >> x;
+        int _min = 2e9;
+        f1(i, x){
+            _min = min(_min, a[i]);
+        }
+        cout << _min << endl;
+    }
+}
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < n; i++)
+#define f1(i, n) for (int i = 1; i <= n; i++)
+#define f2(i, n) for (int i = 2; i <= n; i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+    int n; cin >> n;
+    int res = 0;
+    while(n){
+        res += n % 10;
+        n /= 10;
+    }
+    cout << res;
+
+    // Đã từng đề cập trước đây, while(t--) hay while(n) đều mang ý nghĩa là khi t còn lớn hơn 0, hoặc n còn lớn hơn 0
+    // nhưng đối với while(t--), thì t sẽ giảm đi 1 sau mỗi lần lặp, còn while(n) thì n không thay đổi
+    // Nhưng bên trong vòng lặp, ta đã n = n / 10, nghĩa là n sẽ giảm đi 1 chữ số sau mỗi lần lặp
+    // nghĩa là nó sẽ chạm đến 0, và vòng lặp sẽ dừng, không sợ bị lặp vô hạn
+
+    // phần còn lại khá dễ hiểu, tách chữ số cuối cùng, cộng vào res, sau đó chia n cho 10, để lấy chữ số tiếp theo
+    // rồi lại chấy chữ số cuối cùng
+}
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < (n); i++)
+#define f1(i, n) for (int i = 1; i <= (n); i++)
+#define f2(i, n) for (int i = 2; i <= (n); i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
+    ll n; cin >> n;
+    cout << n * (n - 1) * (n - 2) / 6;
+}
+
+// đây là bài toán tổ hợp, cụ thể là tổ hợp chập k của n, công thức là n! / (k! * (n - k)!)
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < n; i++)
+#define f1(i, n) for (int i = 1; i <= n; i++)
+#define f2(i, n) for (int i = 2; i <= n; i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+bool isPrime(ll n){
+    if(n < 2) return false;
+    for(ll i = 2; i * i <= n; i++){
+        if(n % i == 0) return false;
+    }
+    return true;
+
+}
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
+    ll n;
+    cin >> n;
+    if(isPrime(n)) cout << "YES";
+    else cout << "NO";
+}
+// Độ phức tạp: O(sqrt(n)), giới hạn n <= 10^12, vì thế nên có khoảng sqrt(10^12) = 10^6 phép tính i cần kiểm tra, vậy nên không quá thời gian
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < n; i++)
+#define f1(i, n) for (int i = 1; i <= n; i++)
+#define f2(i, n) for (int i = 2; i <= n; i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
+    ll n; cin >> n;
+    if(n==1){
+        cout << 2;
+        return 0;
+    }
+    ll a = 1, b = 1;
+    for(int i = 3; i <= 100; i++){
+        ll c = a + b;
+        if(c > n){
+            cout << i - 1;
+            return 0;
+        }
+        a = b;
+        b = c;
+    }
+    /* dãy số fibonacci phát triển rất nhanh
+    1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377...
+    Chỉ với 100 số fibonacci đầu tiên, số thứ 100 đã lớn hơn 10^19, tức là vượt quá giới hạn của số long long
+    vì thế bài này, ta cứ for, đến khi nào nó gần như vượt quá long long thì thôi, số phép tính cũng không nhiều lắm
+    GIới hạn n của đề bài là 10^18, tức là dưới kiểu long long, vì thế cũng không quá 100 phép tính là xong
+    Công thức fibonacii là f(n) = f(n - 2) + f(n - 1)
+    Nhưng ta không nhất thiết phải dùng mảng, vì chỉ cần 2 số trước đó, nên ta chỉ cần 2 biến a, b tượng trưng cho f(n - 2) và f(n - 1)
+    Mỗi khi tính xong số fibonacii ở i, ta cập nhật lại a, b, để cho a = f(i - 1), b = f(i), để chuẩn bị cho lần lặp tiếp theo của i + 1
+    */
+}
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < n; i++)
+#define f1(i, n) for (int i = 1; i <= n; i++)
+#define f2(i, n) for (int i = 2; i <= n; i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+
+    ll a, b; cin >> a >> b;
+    cout << a + b + a*b;
+
+    /*
+    Đề bài cho a, b thuộc kiểu int, nhưng giới hạn là <= 10^9
+    nên khi a*b sẽ vượt quá giới hạn của kiểu int, là long long
+    nên bình thường ta sẽ
+    int a, b; cin >> a >> b;
+    ll res = ll(a)*b + a + b;
+    Nhưng cách này lâu, nên viết luôn ll cho nhanh
+    */
+}
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < n; i++)
+#define f1(i, n) for (int i = 1; i <= n; i++)
+#define f2(i, n) for (int i = 2; i <= n; i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+    string s; cin >> s;
+    int d[26] = {0};
+
+    f0(i, s.size()){
+        d[s[i] - 'a']++;
+    }
+    int cnt = 0;
+    f0(i, 26){
+        if(d[i] > 0){
+            cnt++;
+        }
+    }
+    cout << cnt;
+
+    // d là mảng đánh dấu
+    // Vì đề bài đảm bảo chỉ có ký tự latin thường nên ta có thể dùng mảng d[26] để đánh dấu
+    // khi viết s[i] - 'a', giá trị này sẽ nằm trong khoảng từ 0 đến 25, nên ta có thể dùng mảng d[26] để đánh dấu
+    // khi viết int d[26] = {0}; thì mảng d sẽ được khởi tạo tất cả các phần tử bằng 0
+
+}
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < n; i++)
+#define f1(i, n) for (int i = 1; i <= n; i++)
+#define f2(i, n) for (int i = 2; i <= n; i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+    int k; cin >> k;
+    string s; cin >> s;
+
+    s = " " + s;
+    int n = s.length() - 1;
+    // Thực ra mảng bắt đầu bằng 0, nhưng đễ dễ sử dụng, và cũng do thói quen mỗi người, nên trong bài này, mảng sẽ bắt đầu từ 1
+    // n là độ dài của chuỗi s, nên sẽ bắt đầu từ 1, và kết thúc ở n
+    // thay vì for(int i = 0; i < n; i++) thì ta sẽ for(int i = 1; i <= n; i++)
+
+    f1(i, n){
+        int x = char(s[i]) - 'a';
+        x -= k;
+        if(x < 0){
+            x += 26;
+        }
+        cout << char(x + 'a');
+    }
+}
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < (n); i++)
+#define f1(i, n) for (int i = 1; i <= (n); i++)
+#define f2(i, n) for (int i = 2; i <= (n); i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+    int d1, m1, y1, d2, m2, y2;
+    cin >> d1 >> m1 >> y1 >> d2 >> m2 >> y2;
+    if(y1 < y2 || (y1 == y2 && m1 < m2) || (y1 == y2 && m1 == m2 && d1 < d2)){
+        cout << "1";
+    }
+    else{
+        cout << "0";
+    }
+}
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < n; i++)
+#define f1(i, n) for (int i = 1; i <= n; i++)
+#define f2(i, n) for (int i = 2; i <= n; i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
+    string s;
+    cin >> s;
+    int res = 0;
+    f0(i, s.size()){
+        res += s[i] - '0';
+    }
+    cout << res;
+
+    // vì giới hạn của n là 10^100, tức là 101 chữ số, không kiểu long long hay int nào chứa được
+    // nên ta phải dùng string để lưu trữ số này
+}
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < n; i++)
+#define f1(i, n) for (int i = 1; i <= n; i++)
+#define f2(i, n) for (int i = 2; i <= n; i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+const int N = 1e5 + 2;
+
+int n, k;
+ll a[N];
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+    int n;
+    cin >> n;
+    f1(i, n) cin >> a[i];
+    cin >> k;
+    ll res = 0;
+    f1(i, k) res += a[i];
+    cout << res;
+
+    // đề bài nói là các số sẽ là 64 bit, nghĩa là gì?
+    // nghĩa là giới hạn của số sẽ là 2^64, tức là gần bằng 10^19, nên ta sẽ dùng kiểu long long để lưu trữ
+    // Khi nói đến số 32 bit, ta nghĩ ngay đến kiểu int, khi nói đến số 64 bit, ta nghĩ ngay đến kiểu long long
+
+}
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < (n); i++)
+#define f1(i, n) for (int i = 1; i <= (n); i++)
+#define f2(i, n) for (int i = 2; i <= (n); i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+ll gcd(ll a, ll b){
+    if(b == 0){
+        return a;
+    }
+    return gcd(b, a % b);
+}
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
+    ll a, b; cin >> a >> b;
+    ll x = gcd(a, b);
+    a /= x;
+    b /= x;
+    cout << a << " " << b;
+}
+
+// rút gọn phân số về cơ bản chỉ cần chia cho ước chung lớn nhất của tử và mẫu
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < n; i++)
+#define f1(i, n) for (int i = 1; i <= n; i++)
+#define f2(i, n) for (int i = 2; i <= n; i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+    int n; cin >> n;
+    if(n%2==0){
+        cout << "EVEN";
+    }
+    else{
+        cout << "ODD";
+    }
+}
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < n; i++)
+#define f1(i, n) for (int i = 1; i <= n; i++)
+#define f2(i, n) for (int i = 2; i <= n; i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+    // đường chéo chính là các phần tử có chỉ số dòng = chỉ số cột, tức là chéo từ trên trái xuống dưới phải
+    // đều bài yêu cầu tìm các đường chéo song song với đường chéo chính mà có tổng lớn nhất
+
+    int n; cin >> n;
+    ll a[n + 1][n + 1];
+    f1(i, n) f1(j, n) cin >> a[i][j];
+
+    ll res = -1e18;
+
+    // tìm các đường chéo song song với đường chéo chính
+    // TH1: đường chéo song song với đường chéo chính nằm ở dưới đường chéo chính
+    f1(i, n){
+        ll sum = 0;
+        f0(j, n){
+            int u = i + j, v = j + 1;
+            if(u <= n && v <= n){
+                sum += a[u][v];
+            }
+        }
+        res = max(res, sum);
+    }
+
+    // TH2: đường chéo song song với đường chéo chính nằm ở trên đường chéo chính
+    f1(j, n){
+        ll sum = 0;
+        f0(i, n){
+            int u = i + 1, v = j + i;
+            if(u <= n && v <= n){
+                sum += a[u][v];
+            }
+        }
+        res = max(res, sum);
+    }
+    cout << res;
+}
+
+// Bài này chưa ac, chưa biết sai ở đâu
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < n; i++)
+#define f1(i, n) for (int i = 1; i <= n; i++)
+#define f2(i, n) for (int i = 2; i <= n; i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+
+    int a, b; cin >> a >> b;
+    if(a%b==0){
+        cout << "YES" << endl;
+    }
+    else{
+        cout << "NO" << endl;
+    }
+}
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < n; i++)
+#define f1(i, n) for (int i = 1; i <= n; i++)
+#define f2(i, n) for (int i = 2; i <= n; i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+int m, n;
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
+    cin >> m >> n;
+    int a[m + 1][n + 1];
+    int b[m + 1][n + 1];
+    f1(i, m) f1(j, n) cin >> a[i][j];
+    f1(i, m) f1(j, n) cin >> b[i][j];
+
+    int c[m + 1][n + 1];
+    f1(i, m) f1(j, n) c[i][j] = a[i][j] + b[i][j];
+    f1(i, m){
+        f1(j, n) cout << c[i][j] << " ";
+        cout << endl;
+    }
+}
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < n; i++)
+#define f1(i, n) for (int i = 1; i <= n; i++)
+#define f2(i, n) for (int i = 2; i <= n; i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+    ll a, b, c; cin >> a >> b >> c;
+
+    // a, b đều là long long, nên có thể a + b sẽ quá long long, vì thế nếu cách thông thương ta sẽ cout << (a + b) % c
+    // sẽ lỗi, vì trước khi chia lấy dư, đã có tổng a + b quá giới hạn của long long
+    // nhưng ta để ý đề bài là c <= 10^9
+    // Công thức toán học, ta có (a + b)%b = (a%b + b%b)%b
+    // không chỉ 2 biến a, b, mà có thể 3 biến (a + b + c)%d = ((a%d + b%d)%d + c%d)%d
+    // Không chỉ 3 biến, mà có thể n biến
+    // Điều này rất quan trọng
+    // Quay lại bài toán, ta có (a + b)%c = (a%c + b%c)%c
+    // vì a%c, b%c < c, nên a%c + b%c < 2c, nên không bao giờ vượt quá giới hạn của long long
+    // sau khi có a%c + b%c, ta lại chia lấy dư cho c, bởi vì a + b có thể vượt quá c, nên ta cần chia lấy dư
+    // mà dù là a + b không vượt quá c, nhưng ta vẫn phải chắc chắn lại 1 lần nữa
+
+    cout << (a % c + b % c) % c;
+}
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < n; i++)
+#define f1(i, n) for (int i = 1; i <= n; i++)
+#define f2(i, n) for (int i = 2; i <= n; i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
+    // tổng lớn nhất trên các đường thẳng song song đường chéo phụ
+
+    int n; cin >> n;
+    int a[n + 1][n + 1];
+    f1(i, n) f1(j, n) cin >> a[i][j];
+    ll maxSum1 = 0; // maximum sum above the secondary diagonal
+    ll maxSum2 = 0; // maximum sum below the secondary diagonal
+
+    // Calculate the maximum sum above the secondary diagonal
+    f1(i, n) {
+        ll sum = 0;
+        f1(j, n) {
+            if (i + j <= n) {
+                sum += a[i][j];
+            }
+        }
+        maxSum1 = max(maxSum1, sum);
+    }
+
+    // Calculate the maximum sum below the secondary diagonal
+    f1(i, n) {
+        ll sum = 0;
+        f1(j, n) {
+            if (i + j >= n + 1) {
+                sum += a[i][j];
+            }
+        }
+        maxSum2 = max(maxSum2, sum);
+    }
+
+    cout << max(maxSum1, maxSum2);
+}
+
+// bài này chưa ac, chưa biết sai ở đâu
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < (n); i++)
+#define f1(i, n) for (int i = 1; i <= (n); i++)
+#define f2(i, n) for (int i = 2; i <= (n); i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+    ll a, b, c, d;
+    cout << max(a, max(b, max(c, d)));
+}
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < n; i++)
+#define f1(i, n) for (int i = 1; i <= n; i++)
+#define f2(i, n) for (int i = 2; i <= n; i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
+    ll a, b, c;
+    cin >> a >> b >> c;
+
+    if(c*b == a || a*c == b || b*a == c){
+        cout << "/";
+    }
+    else{
+        cout << "NOSOL";
+    }
+
+    /*
+    a/b = c
+    b/c = a
+    c/a = b
+
+    Bài này nếu kiểm tra a/b == c thì sẽ bị sai, vì a/b là phép chia số nguyên, nên kết quả sẽ là số nguyên
+    ví dụ a = 5, b = 2, c = 2, thì nếu kiểm tra cách đó 5/2 sẽ bằng 2, và c cũng bằng 2
+    nhưng thực tế 5/2 = 2,5, nên cách kiểm tra này sẽ sai
+    Vì thế ta sẽ nhân ngược lại: 
+    a/b = c => a = b*c
+    b/c = a => b = c*a
+    c/a = b => c = a*b
+
+    Làm cách này, ta sẽ tránh được số thập phân, và kết quả sẽ chính xác
+    Nhưng 1 vấn đề là a, b, c <= 10^9
+    Tức là tích 2 số có thể lên tới 10^18, nên ta phải dùng kiểu long long 
+    nhưng ta vẫn có thể làm theo cách sau
+    int a, b, c;
+    if(ll(a)*ll(b) == c || ll(b)*ll(c) == a || ll(c)*ll(a) == b){
+        cout << "/";
+    }
+    else{
+        cout << "NOSOL";
+    }
+    Như này vẫn sẽ chính xác, tiết kiệm bộ nhớ hơn, nhưng dài dòng, dễ nhầm lẫn
+    */
+}
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < (n); i++)
+#define f1(i, n) for (int i = 1; i <= (n); i++)
+#define f2(i, n) for (int i = 2; i <= (n); i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+    ll a, b, c;
+    cin >> a >> b >> c;
+    a %= c;
+    b %= c;
+    cout << (a * b) % c;
+}
+
+// a*b % mod = (a % mod) * (b % mod) % mod
+// khi a%mod, nó sẽ < mod, khi nhân với b%mod, nó cũng sẽ < mod
+// tức là a và b sau khi mod, rồi lấy tích, giá trị tối đa sẽ < mod^2
+// mà c chính là mod, giới hạn đề bài c <= 10^9, nên a*b % c không bao giờ vượt quá 10^18, tức là không bao giờ vượt quá kiểu dữ liệu long long
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < (n); i++)
+#define f1(i, n) for (int i = 1; i <= (n); i++)
+#define f2(i, n) for (int i = 2; i <= (n); i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
+    int a[5];
+    f0(i, 5){
+        cin >> a[i];
+    }
+    sort(a, a + 5);
+    cout << a[1];
+}
+
+// bài này cách đơn giản nhất chỉ có sort mảng và in ra phần tử thứ 2
+// lưu ý sort là hàm thuộc thư viện algorithm, cần phải include nó vào thì mới dùng được
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <set>
+#include <queue>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <tuple>
+#define f0(i, n) for (int i = 0; i < n; i++)
+#define f1(i, n) for (int i = 1; i <= n; i++)
+#define f2(i, n) for (int i = 2; i <= n; i++)
+#define mp make_pair
+
+using namespace std;
+typedef long long ll;
+const int mod = 1000000007;
+const int N = 1e6 + 2;
+
+ll a[N], n;
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
+    cin >> n;
+    a[1] = 1;
+    a[2] = 1;
+    for(int i = 3; i <= n; i++){
+        a[i] = 2*a[i - 1] - a[i - 2];
+    }
+    cout << a[n];
+
+    // Mảng bắt đầu từ 0, nghĩa là dùng được từ a[0], a[1], a[2], ......
+    // a[0] mình có thể không dùng, dùng từ a[1], bởi vì làm vậy sẽ dễ hơn, vì đề bài bắt in ra u(n), nên mình cứ in ra a[n] luôn
+    // nếu mình dùng cách cũ, bắt đầu từ 0, thì phải viết là a[n - 1], như vậy cũng được, nhưng dễ nhầm lẫn
+}
